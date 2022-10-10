@@ -1,0 +1,24 @@
+<?php
+
+$posts = [1 => 'Good news', 3 => 'Read this', 5 => 'Important announcement'];
+var_dump($posts)
+?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Posts</title>
+    </head>
+    <body>
+
+    <h1>Posts</h1>
+
+    <ul>
+        <?php foreach($posts as $id => $title): ?>
+        
+            <li><a href="post.php?id=<?= $id ?>"><?= $title ?></a></li>
+            
+        <?php endforeach; ?>
+    </ul>
+
+    </body>
+</html>
