@@ -1,22 +1,66 @@
 <?php
 
 
+//--------------------------------------------------example from tutorial ----------------------------------------------
+// <?php
+
+// $name = "Radio";
+// $desc = "A device for listening to radio broadcasts";
+// $price = 14.99;
+
+// $sql = "INSERT INTO product (name, description, price)
+//         VALUES (?,?,?)";  // 1. Write your SQL here
+
+// $stmt = mysqli_prepare($conn, $sql);
+
+// if ($stmt === false) {
+
+//     echo mysqli_error($conn);
+
+// } else {
+
+//     $ret = mysqli_stmt_bind_param($stmt,"ssd", $name, $desc, $price );  // 2. Add the arguments here
+
+//     if (mysqli_stmt_execute($stmt)) {
+
+//         $id = mysqli_insert_id($conn);  // 3. Get the ID of the newly-inserted record here
+//         echo "Inserted record with ID: $id";
+//     } else {
+//         echo myqli_stmt_error($stmt);
+//     }
+// }
+//--------------------------------------------------
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   require 'includes/database.php';
   
-  $sql = "INSERT INTO articles (title, content, published_at)
-            VALUES ('" . $_POST['title'] . "','"
-                       . $_POST['content'] . "','"
-                       . $_POST['published_at'] . "')";
-  
-  $results = mysqli_query($conn, $sql);
+  // $sql = "INSERT INTO articles (title, content, published_at)
+  //           VALUES ('" . mysqli_escape_string($_POST['title']) . "','"
+  //                      . mysqli_escape_string($_POST['content']) . "','"
+  //                      . mysqli_escape_string($_POST['published_at']) . "')";
 
-  if ($results === false) {
+  $sql = "INSERT INTO articles (title, content, published_at)
+  VALUES (?,?,?)";
+
+  // $results = mysqli_query($conn, $sql);
+  $stmt = mysqli_prepare($conn, $sql);
+
+  if ($stmt === false) {
     echo mysqli_error($conn);
   } else {
     // $articles = mysqli_fetch_all($results, MYSQLI_ASSOC);
-    $id = mysqli_insert_id($conn);
-    echo "Inserted record with ID: $id";
+    
+    mysqli_stmt_bind_param($stmt, "sss", $_POST['title'], $_POST['content'], $_POST['published_at'] );
+    
+    if (mysqli_stmt_execute($stmt)) {
+      $id = mysqli_insert_id($conn);
+      echo "Inserted record with ID: $id";
+  } else {
+    echo mysqli_stmt_error($stmt);
+  }
+
+    
   }
 }
 
