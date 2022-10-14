@@ -1,7 +1,7 @@
 <?php
 
 include 'includes/database.php';
-echo "connected successfully";
+$conn = getDB();
 
 $sql = "SELECT *
   FROM articles

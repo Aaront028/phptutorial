@@ -2,7 +2,7 @@
 
 include 'includes/database.php';
 
-echo "connected successfully";
+$conn = getDB();
 
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 

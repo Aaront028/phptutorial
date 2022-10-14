@@ -31,10 +31,12 @@
 // }
 //--------------------------------------------------
 
+require 'includes/database.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  require 'includes/database.php';
   
+  $conn = getDB();
+
   // $sql = "INSERT INTO articles (title, content, published_at)
   //           VALUES ('" . mysqli_escape_string($_POST['title']) . "','"
   //                      . mysqli_escape_string($_POST['content']) . "','"
