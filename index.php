@@ -22,6 +22,8 @@ if ($results === false) {
 ?>
 <?php require 'includes/header.php'; ?>
 
+<a href="new-article.php">New Article</a>
+
   <?php if (empty($articles)): ?>
         <p>No articles found.</p>
       <?php else: ?>
@@ -30,12 +32,11 @@ if ($results === false) {
     
           <li>
             <article>
-              <h2><a href="article.php?id=<?= $article['id']; ?>"><?= $article['title'];?></a></h2>
-              <p><?= $article['content']; ?></p>
+              <h2><a href="article.php?id=<?= $article['id']; ?>"><?= htmlspecialchars($article['title']);?></a></h2>
+              <p><?= htmlspecialchars($article['content']); ?></p>
             </article>
           </li>
           <?php endforeach; ?>
           </ul>
-
     <?php endif; ?>
 <?php require 'includes/footer.php'; ?>

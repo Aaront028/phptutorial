@@ -17,39 +17,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   
 <form method="POST">
 
-  <!-- <input name="username">
-  <input name="password" type="range"> -->
-
-<!-- <select name="marque[]" multiple>
-  <option value="bmw">BMW</option>
-  <option value="fmc">Ford</option>
-  <option value="saab">Saab</option>
-
-</select> -->
-
-<!-- <select name="country"> 
-  <optgroup label="Europe">
-      <option value="germany">Germany</option>
-      <option value="france">France</option>
-      <option value="uk" selected>United Kingdom</option>
-  </optgroup>
-  <optgroup label="America">
-      <option value="brazil">brazil</option>
-      <option value="canada">Canada</option>
-      <option value="usa">United States</option>
-  </optgroup>
-</select> -->
-<!-- <p>Which color do you like?</p> -->
-
-<!-- <div>
-  <input type="checkbox" name="red"> Red
-</div>
-<div>
-  <input type="checkbox" name="green">Green
-</div>
-<div>
-  <input type="checkbox" name="blue"> Blue
-</div> -->
 
 <div>
     <p>Which color do you like?</p>
