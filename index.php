@@ -1,6 +1,10 @@
 <?php
 
 include 'includes/database.php';
+include 'includes/auth.php';
+
+session_start();
+
 $conn = getDB();
 
 $sql = "SELECT *
@@ -22,7 +26,17 @@ if ($results === false) {
 ?>
 <?php require 'includes/header.php'; ?>
 
-<a href="new-article.php">New Article</a>
+<?php var_dump($_SESSION); ?>
+
+<?php if (isLoggedIn()): ?>
+
+  <p>You are logged in. <a href="logout.php">Log out</a></p>
+  
+  <p><a href="new-article.php">New Article</a></p>
+<?php else: ?>
+  <p>You are logged out. <a href="login.php">Log in</a></p>
+<?php endif; ?>
+
 
   <?php if (empty($articles)): ?>
         <p>No articles found.</p>
